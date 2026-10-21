@@ -1,0 +1,268 @@
+/* =========================================
+   1. PENGATURAN AWAL (VARIABEL & RESET)
+   ========================================= */
+
+/* Mendefinisikan variabel warna agar mudah diubah (Tema Warna Kafe) */
+:root {
+    --warna-utama: #8B5A2B; /* Cokelat Kopi */
+    --warna-aksen: #E59866; /* Oranye Lembut */
+    --warna-latar: #F9F6F0; /* Krem Terang */
+    --warna-teks: #333333; /* Abu-abu Gelap */
+    --warna-putih: #FFFFFF;
+    --bayangan: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --lengkungan: 12px;
+}
+
+/* Reset dasar agar tampilan konsisten di semua browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--warna-latar);
+    color: var(--warna-teks);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. BAGIAN KEPALA (HEADER)
+   ========================================= */
+.header-kafe {
+    background-color: var(--warna-utama);
+    color: var(--warna-putih);
+    text-align: center;
+    padding: 20px 15px;
+    box-shadow: var(--bayangan);
+}
+
+.header-kafe p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* =========================================
+   3. AREA UTAMA & FILTER
+   ========================================= */
+.area-utama {
+    padding: 15px;
+}
+
+.area-filter {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto; /* Memungkinkan tombol digeser ke samping di HP */
+    padding-bottom: 15px;
+    /* Menyembunyikan scrollbar tapi tetap bisa di-scroll */
+    scrollbar-width: none; 
+}
+.area-filter::-webkit-scrollbar {
+    display: none;
+}
+
+.btn-filter {
+    background-color: var(--warna-putih);
+    color: var(--warna-utama);
+    border: 1px solid var(--warna-utama);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap; /* Teks tombol tidak terpotong ke bawah */
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Desain saat tombol filter disentuh atau aktif */
+.btn-filter:hover,
+.btn-filter.aktif {
+    background-color: var(--warna-utama);
+    color: var(--warna-putih);
+}
+
+/* =========================================
+   4. DAFTAR MENU (CSS GRID)
+   ========================================= */
+.area-menu {
+    display: grid;
+    /* Membuat grid responsif: lebar minimal kartu 150px, maksimal selebar mungkin */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+/* Desain Kartu Menu (Nanti elemen ini dibuat oleh JavaScript) */
+.kartu-menu {
+    background-color: var(--warna-putih);
+    border-radius: var(--lengkungan);
+    overflow: hidden;
+    box-shadow: var(--bayangan);
+    display: flex;
+    flex-direction: column;
+}
+
+.kartu-menu img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover; /* Gambar menyesuaikan kotak tanpa terlihat gepeng */
+}
+
+.info-menu {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Mendorong tombol ke bagian paling bawah kartu */
+}
+
+.info-menu h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.harga-menu {
+    color: var(--warna-utama);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btn-tambah {
+    margin-top: auto; /* Memaksa tombol selalu di bawah */
+    background-color: var(--warna-aksen);
+    color: var(--warna-putih);
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-tambah:hover {
+    background-color: #d35400;
+}
+
+/* =========================================
+   5. PANEL KERANJANG PESANAN
+   ========================================= */
+.area-keranjang {
+    background-color: var(--warna-putih);
+    padding: 20px;
+    margin: 15px;
+    border-radius: var(--lengkungan);
+    box-shadow: var(--bayangan);
+}
+
+.header-keranjang {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    background-color: red;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.isi-keranjang {
+    min-height: 100px;
+    max-height: 300px;
+    overflow-y: auto; /* Bisa di-scroll jika pesanan banyak */
+    margin-bottom: 15px;
+}
+
+.teks-kosong {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+/* Desain item di dalam keranjang (Dibuat oleh JavaScript nanti) */
+.item-pesanan {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   6. FOOTER KERANJANG & TOMBOL PESAN
+   ========================================= */
+.input-meja {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-meja input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.total-harga {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.btn-pesan {
+    width: 100%;
+    background-color: #25D366; /* Warna khas WhatsApp */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-pesan:hover {
+    background-color: #1ebe57;
+}
+
+/* =========================================
+   7. TATA LETAK RESPONSIF (UNTUK LAPTOP/TABLET)
+   ========================================= */
+/* Aturan ini hanya berlaku jika lebar layar minimal 768px (Laptop/Tablet) */
+@media (min-width: 768px) {
+    body {
+        /* Menggunakan flexbox untuk membagi layar kiri dan kanan */
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .header-kafe {
+        width: 100%; /* Header tetap penuh di atas */
+    }
+
+    .area-utama {
+        flex: 1; /* Mengambil sisa ruang (sekitar 70%) */
+        padding: 20px;
+    }
+
+    .area-menu {
+        /* Kartu menu di laptop bisa lebih besar */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .area-keranjang {
+        width: 350px; /* Lebar keranjang tetap */
+        position: sticky; /* Keranjang akan menempel di kanan walau di-scroll */
+        top: 20px;
+        height: max-content;
+        margin-top: 20px;
+    }
+}
