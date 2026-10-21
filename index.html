@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Pengaturan dasar karakter dan viewport agar web responsif di layar HP -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Menu Lite - Kafe SMA/SMK</title>
+
+    <!-- Menghubungkan file CSS untuk mendesain tampilan web -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Bagian Kepala (Header): Menampilkan nama kafe dan informasi singkat -->
+    <header class="header-kafe">
+        <h1>☕ Kedai Kopi Pelajar</h1>
+        <p>Pilih menu favoritmu, pesan langsung tanpa antre!</p>
+    </header>
+
+    <!-- Bagian Utama: Memuat tombol kategori dan daftar menu -->
+    <main class="area-utama">
+        
+        <!-- Bagian Filter: Tombol-tombol untuk menyaring kategori menu -->
+        <section class="area-filter">
+            <!-- Atribut data-kategori akan digunakan oleh JavaScript untuk memfilter data -->
+            <button class="btn-filter aktif" data-kategori="semua">Semua</button>
+            <button class="btn-filter" data-kategori="kopi">Kopi</button>
+            <button class="btn-filter" data-kategori="non-kopi">Non-Kopi</button>
+            <button class="btn-filter" data-kategori="makanan">Makanan</button>
+        </section>
+
+        <!-- Bagian Daftar Menu: Kosong di awal, akan diisi otomatis oleh JavaScript -->
+        <section class="area-menu" id="daftar-menu">
+            <!-- Kartu menu akan dirender di sini oleh file script.js -->
+        </section>
+
+    </main>
+
+    <!-- Bagian Keranjang (Cart): Menempel di bawah (HP) atau di samping (Laptop) -->
+    <aside class="area-keranjang" id="panel-keranjang">
+        <div class="header-keranjang">
+            <h2>🛒 Pesanan Saya</h2>
+            <!-- Lencana untuk menunjukkan jumlah total item yang dipilih -->
+            <span id="badge-jumlah" class="badge">0</span>
+        </div>
+
+        <!-- Daftar item yang sudah dipilih pelanggan akan muncul di sini -->
+        <div class="isi-keranjang" id="item-keranjang">
+            <p class="teks-kosong">Belum ada pesanan.</p>
+        </div>
+
+        <!-- Bagian bawah keranjang: Input nomor meja dan Total Harga -->
+        <div class="footer-keranjang">
+            <div class="input-meja">
+                <label for="nomor-meja">Nomor Meja:</label>
+                <input type="number" id="nomor-meja" placeholder="Contoh: 05" min="1">
+            </div>
+            
+            <div class="total-harga">
+                <span>Total:</span>
+                <strong id="teks-total">Rp 0</strong>
+            </div>
+
+            <!-- Tombol untuk memproses pesanan ke WhatsApp -->
+            <button class="btn-pesan" id="tombol-pesan">Kirim Pesanan ke Kasir</button>
+        </div>
+    </aside>
+
+    <!-- Menghubungkan file JavaScript untuk logika interaktif (data, filter, tambah pesanan) -->
+    <script src="script.js"></script>
+</body>
+</html>
