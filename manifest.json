@@ -1,0 +1,22 @@
+{
+  "name": "Web Menu Lite Kafe",
+  "short_name": "Menu Kafe",
+  "description": "Menu digital kafe tanpa antre dan bisa diakses offline",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F9F6F0",
+  "theme_color": "#8B5A2B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
